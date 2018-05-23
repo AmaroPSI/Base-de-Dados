@@ -1,4 +1,3 @@
-/* Cod */
 Use projetobd;
 
 DROP TABLE IF EXISTS Clientes;
@@ -6,6 +5,7 @@ DROP TABLE IF EXISTS disponibilidade_veiculo;
 DROP TABLE IF EXISTS Marca_Carros;
 DROP TABLE IF EXISTS Funcionarios;
 DROP TABLE IF EXISTS Aluguer;
+DROP TABLE IF EXISTS Seguro;
 
 CREATE TABLE Clientes (
   id_cliente int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -19,7 +19,6 @@ CREATE TABLE Clientes (
   cod_postal decimal(8,8) NOT NULL, 
   UNIQUE KEY (NIF)
 ) ENGINE=InnoDB;
-
 
 CREATE TABLE Disponibilidade_Veiculo(
 id_disponibilidade int (10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -35,7 +34,6 @@ CREATE TABLE Marca_Carros (
   categoria int(12) NOT NULL,
   cv int(5) NOT NULL
 ) ENGINE=InnoDB;
-
 
 CREATE TABLE Funcionarios (
   id_funcionario int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -54,19 +52,10 @@ CREATE TABLE Aluguer (
   custos_reparação decimal(8,8) NOT NULL,
   numero_km_feitos int(8)
 ) ENGINE=InnoDB;
-<<<<<<< HEAD
 
 CREATE TABLE Seguro (
   id_seguro int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   tipo_seguro varchar(100) NOT NULL,
   data_seguro date NOT NULL
 ) ENGINE=InnoDB;
-/*
-CREATE TABLE categoria_produtos(
-id int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-nome varchar(100) NOT NULL,
-obs varchar(500)
-)ENGINE=InnoDB;
-=======
-/*
->>>>>>> 9e19b95716a0a173c3b366a42ea68484d3e52a9c
+
