@@ -1,23 +1,8 @@
 /* Cod */
 Use projetobd;
 
-DROP TABLE IF EXISTS Clientes;
-DROP TABLE IF EXISTS categoria_produtos;
 DROP TABLE IF EXISTS Funcionarios;
 DROP TABLE IF EXISTS Aluguer;
-
-CREATE TABLE Clientes (
-  id_cliente int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  primeiro_nome varchar(100) NOT NULL,
-  segundo_nome varchar(100) NOT NULL,
-  cidade varchar(50),
-  telemovel int(12) NOT NULL,
-  morada varchar(500),
-  NIF int(20)NOT NULL,
-  email varchar(100),
-  cod_postal decimal(8,8) NOT NULL, 
-  UNIQUE KEY (NIF)
-) ENGINE=InnoDB;
 
 CREATE TABLE Funcionarios (
   id_funcionario int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
