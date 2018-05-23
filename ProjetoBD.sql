@@ -21,6 +21,12 @@ CREATE TABLE Aluguer (
   custos_reparação decimal(8,8) NOT NULL,
   numero_km_feitos int(8)
 ) ENGINE=InnoDB;
+
+CREATE TABLE Seguro (
+  id_seguro int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  tipo_seguro varchar(100) NOT NULL,
+  data_seguro date NOT NULL
+) ENGINE=InnoDB;
 /*
 CREATE TABLE categoria_produtos(
 id int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
