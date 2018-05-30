@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS Marca_Carros;
 /*DROP TABLE IF EXISTS Funcionarios;*/
 DROP TABLE IF EXISTS Aluguer;
 DROP TABLE IF EXISTS Seguro;
-DROP TABLE IF EXISTS Carros;
+/*DROP TABLE IF EXISTS Carros;/*
 
 /*CREATE TABLE Clientes (
   id_cliente int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -54,7 +54,7 @@ CREATE TABLE Aluguer (
   numero_km_feitos int(8),
   FOREIGN KEY (id_aluguer) REFERENCES Clientes(id_cliente),
   FOREIGN KEY (id_aluguer) REFERENCES Funcionarios(id_funcionario)
-) ENGINE=InnoDB;
+  ) ENGINE=InnoDB;
 
 CREATE TABLE Seguro (
   id_seguro int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -63,7 +63,8 @@ CREATE TABLE Seguro (
 ) ENGINE=InnoDB;
 
 CREATE TABLE Carros (
-matricula int(8) UNSIGNED PRIMARY KEY AUTO_INCREMENT
+matricula int(8) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+FOREIGN KEY (matricula) REFERENCES Aluguer(id_aluguer)
 ) ENGINE=InnoDB;
 
 
