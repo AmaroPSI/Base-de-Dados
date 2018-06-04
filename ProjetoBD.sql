@@ -1,14 +1,14 @@
 Use projetobd;
 
-/*DROP TABLE IF EXISTS Clientes;*/
+/*DROP TABLE IF EXISTS Clientes;
 DROP TABLE IF EXISTS disponibilidade_veiculo;
 DROP TABLE IF EXISTS Marca_Carros;
-/*DROP TABLE IF EXISTS Funcionarios;*/
+DROP TABLE IF EXISTS Funcionarios;
 DROP TABLE IF EXISTS Aluguer;
 DROP TABLE IF EXISTS Seguro;
-/*DROP TABLE IF EXISTS Carros;/*
+DROP TABLE IF EXISTS Carros;
 
-/*CREATE TABLE Clientes (
+CREATE TABLE Clientes (
   id_cliente int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   primeiro_nome varchar(100) NOT NULL,
   segundo_nome varchar(100) NOT NULL,
@@ -20,7 +20,6 @@ DROP TABLE IF EXISTS Seguro;
   cod_postal decimal(8,8) NOT NULL
 ) engine=InnoDB;
 
-*/
 CREATE TABLE Disponibilidade_Veiculo(
 id_disponibilidade int (10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 data_inicio_disponibilidade date NOT NULL,
@@ -36,14 +35,14 @@ CREATE TABLE Marca_Carros (
   cv int(5) NOT NULL
 ) ENGINE=InnoDB;
 
-/*CREATE TABLE Funcionarios (
+CREATE TABLE Funcionarios (
   id_funcionario int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   primeiro_nome varchar(100) NOT NULL,
   segundo_nome varchar(100) NOT NULL,
   telemovel int(12) NOT NULL,
   NIF int(20)NOT NULL, 
   UNIQUE KEY (NIF)
-) ENGINE=InnoDB;*/
+) ENGINE=InnoDB;
 
 CREATE TABLE Aluguer (
   id_aluguer int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -64,7 +63,10 @@ CREATE TABLE Seguro (
 
 CREATE TABLE Carros (
 matricula int(8) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-FOREIGN KEY (matricula) REFERENCES Aluguer(id_aluguer)
-) ENGINE=InnoDB;
+FOREIGN KEY (matricula) REFERENCES Aluguer(id_aluguer),
+FOREIGN KEY (matricula) REFERENCES Marca_carros(id_marca),
+FOREIGN KEY (matricula) REFERENCES Seguro (id_seguro),
+FOREIGN KEY (matricula) REFERENCES Disponibilidade_Veiculo (id_disponibilidade)
+) ENGINE=InnoDB;*/
 
 
