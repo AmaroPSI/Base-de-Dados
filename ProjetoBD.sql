@@ -1,14 +1,14 @@
 Use projetobd;
 
-DROP TABLE IF EXISTS Clientes;
+/*DROP TABLE IF EXISTS Clientes;*/
 DROP TABLE IF EXISTS disponibilidade_veiculo;
 DROP TABLE IF EXISTS Marca_Carros;
-DROP TABLE IF EXISTS Funcionarios;
-DROP TABLE IF EXISTS Aluguer;
+/*DROP TABLE IF EXISTS Funcionarios;*/
+/*DROP TABLE IF EXISTS Aluguer;*/
 DROP TABLE IF EXISTS Seguro;
 DROP TABLE IF EXISTS Carros;
 
-CREATE TABLE Clientes (
+/*CREATE TABLE Clientes (
   id_cliente int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   primeiro_nome varchar(100) NOT NULL,
   segundo_nome varchar(100) NOT NULL,
@@ -18,13 +18,14 @@ CREATE TABLE Clientes (
   NIF int(20),
   email varchar(100),
   cod_postal decimal(8,8) NOT NULL
-) engine=InnoDB;
+) engine=InnoDB;*/
 
 CREATE TABLE Disponibilidade_Veiculo(
 id_disponibilidade int (10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 data_inicio_disponibilidade date NOT NULL,
 data_fim_disponibilidade date NOT NULL
 )ENGINE=InnoDB;
+
 
 CREATE TABLE Marca_Carros (
   id_marca int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -35,7 +36,8 @@ CREATE TABLE Marca_Carros (
   cv int(5) NOT NULL
 ) ENGINE=InnoDB;
 
-CREATE TABLE Funcionarios (
+
+/*CREATE TABLE Funcionarios (
   id_funcionario int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   primeiro_nome varchar(100) NOT NULL,
   segundo_nome varchar(100) NOT NULL,
@@ -43,8 +45,9 @@ CREATE TABLE Funcionarios (
   NIF int(20)NOT NULL, 
   UNIQUE KEY (NIF)
 ) ENGINE=InnoDB;
+*/
 
-CREATE TABLE Aluguer (
+/*CREATE TABLE Aluguer (
   id_aluguer int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   data_inicio_aluguer date NOT NULL,
   data_fim_aluguer date NOT NULL, 
@@ -54,12 +57,14 @@ CREATE TABLE Aluguer (
   FOREIGN KEY (id_aluguer) REFERENCES Clientes(id_cliente),
   FOREIGN KEY (id_aluguer) REFERENCES Funcionarios(id_funcionario)
   ) ENGINE=InnoDB;
-
+  */
+  
 CREATE TABLE Seguro (
   id_seguro int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   tipo_seguro varchar(100) NOT NULL,
   data_seguro date NOT NULL
 ) ENGINE=InnoDB;
+
 
 CREATE TABLE Carros (
 matricula int(8) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -68,5 +73,4 @@ FOREIGN KEY (matricula) REFERENCES Marca_carros(id_marca),
 FOREIGN KEY (matricula) REFERENCES Seguro (id_seguro),
 FOREIGN KEY (matricula) REFERENCES Disponibilidade_Veiculo (id_disponibilidade)
 ) ENGINE=InnoDB;
-
 
