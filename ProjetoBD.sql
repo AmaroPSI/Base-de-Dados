@@ -1,6 +1,6 @@
 Use projetobd;
 
-/*DROP TABLE IF EXISTS Clientes;
+DROP TABLE IF EXISTS Clientes;
 DROP TABLE IF EXISTS disponibilidade_veiculo;
 DROP TABLE IF EXISTS Marca_Carros;
 DROP TABLE IF EXISTS Funcionarios;
@@ -67,6 +67,6 @@ FOREIGN KEY (matricula) REFERENCES Aluguer(id_aluguer),
 FOREIGN KEY (matricula) REFERENCES Marca_carros(id_marca),
 FOREIGN KEY (matricula) REFERENCES Seguro (id_seguro),
 FOREIGN KEY (matricula) REFERENCES Disponibilidade_Veiculo (id_disponibilidade)
-) ENGINE=InnoDB;*/
+) ENGINE=InnoDB;
 
 
