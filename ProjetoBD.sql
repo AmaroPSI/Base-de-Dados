@@ -1,23 +1,14 @@
 Use projetobd;
 
-/*DROP TABLE IF EXISTS Clientes;*/
-<<<<<<< HEAD
-/*DROP TABLE IF EXISTS disponibilidade_veiculo;*/
-/*DROP TABLE IF EXISTS Marca_Carros;*/
-/*DROP TABLE IF EXISTS Funcionarios;*/
-/*DROP TABLE IF EXISTS Aluguer;*/
-/*DROP TABLE IF EXISTS Seguro;*/
-/*DROP TABLE IF EXISTS Carros;*/
-=======
+/*DROP TABLE IF EXISTS Clientes;
 DROP TABLE IF EXISTS disponibilidade_veiculo;
 DROP TABLE IF EXISTS Marca_Carros;
-/*DROP TABLE IF EXISTS Funcionarios;*/
-/*DROP TABLE IF EXISTS Aluguer;*/
+DROP TABLE IF EXISTS Funcionarios;
+DROP TABLE IF EXISTS Aluguer;
 DROP TABLE IF EXISTS Seguro;
 DROP TABLE IF EXISTS Carros;
->>>>>>> ffa314499521778d6c5de306150fecf42acc5205
 
-/*CREATE TABLE Clientes (
+CREATE TABLE Clientes (
   id_cliente int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   primeiro_nome varchar(100) NOT NULL,
   segundo_nome varchar(100) NOT NULL,
@@ -26,48 +17,35 @@ DROP TABLE IF EXISTS Carros;
   morada varchar(500),
   NIF int(20),
   email varchar(100),
-  cod_postal decimal(8,8) NOT NULL
-) engine=InnoDB;*/
+  cod_postal decimal(8,8) NOT NULL,
+  Unique key(telemovel,email,NIF)
+) engine=InnoDB;
 
-/*CREATE TABLE Disponibilidade_Veiculo(
+CREATE TABLE Disponibilidade_Veiculo(
 id_disponibilidade int (10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 data_inicio_disponibilidade date NOT NULL,
 data_fim_disponibilidade date NOT NULL
-)ENGINE=InnoDB;*/
-
-<<<<<<< HEAD
-/*CREATE TABLE Marca_Carros (
-=======
+)ENGINE=InnoDB;
 
 CREATE TABLE Marca_Carros (
->>>>>>> ffa314499521778d6c5de306150fecf42acc5205
   id_marca int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   marca varchar(100) NOT NULL,
   modelo varchar(100) NOT NULL,
   ano int(4) NOT NULL,
   categoria int(12) NOT NULL,
   cv int(5) NOT NULL
-) ENGINE=InnoDB;*/
+) ENGINE=InnoDB;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ffa314499521778d6c5de306150fecf42acc5205
-/*CREATE TABLE Funcionarios (
+CREATE TABLE Funcionarios (
   id_funcionario int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   primeiro_nome varchar(100) NOT NULL,
   segundo_nome varchar(100) NOT NULL,
   telemovel int(12) NOT NULL,
   NIF int(20)NOT NULL, 
-  UNIQUE KEY (NIF)
-<<<<<<< HEAD
-) ENGINE=InnoDB;*/
-=======
+  UNIQUE KEY (NIF, telemovel)
 ) ENGINE=InnoDB;
-*/
->>>>>>> ffa314499521778d6c5de306150fecf42acc5205
 
-/*CREATE TABLE Aluguer (
+CREATE TABLE Aluguer (
   id_aluguer int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   data_inicio_aluguer date NOT NULL,
   data_fim_aluguer date NOT NULL, 
@@ -76,37 +54,36 @@ CREATE TABLE Marca_Carros (
   numero_km_feitos int(8),
   FOREIGN KEY (id_aluguer) REFERENCES Clientes(id_cliente),
   FOREIGN KEY (id_aluguer) REFERENCES Funcionarios(id_funcionario)
-<<<<<<< HEAD
-  ) ENGINE=InnoDB;*/
-
-/*CREATE TABLE Seguro (
-=======
   ) ENGINE=InnoDB;
-  */
-  
+
 CREATE TABLE Seguro (
->>>>>>> ffa314499521778d6c5de306150fecf42acc5205
   id_seguro int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   tipo_seguro varchar(100) NOT NULL,
   data_seguro date NOT NULL,
-  FOREIGN KEY (id_seguro) REFERENCES Carros (matricula),
-) ENGINE=InnoDB;*/
-
-<<<<<<< HEAD
-/*CREATE TABLE Carros (
-=======
+  FOREIGN KEY (id_seguro) REFERENCES Carros (matricula)
+) ENGINE=InnoDB;
 
 CREATE TABLE Carros (
->>>>>>> ffa314499521778d6c5de306150fecf42acc5205
-matricula int(8) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+matricula int(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 FOREIGN KEY (matricula) REFERENCES Aluguer(id_aluguer),
 FOREIGN KEY (matricula) REFERENCES Marca_carros(id_marca),
 FOREIGN KEY (matricula) REFERENCES Seguro (id_seguro),
-<<<<<<< HEAD
-FOREIGN KEY (matricula) REFERENCES disponibilidade_veiculo (id_disponibilidade)
+FOREIGN KEY (matricula) REFERENCES disponibilidade_veiculo (id_disponibilidade),
+Unique Key(matricula)
 ) ENGINE=InnoDB;*/
-=======
-FOREIGN KEY (matricula) REFERENCES Disponibilidade_Veiculo (id_disponibilidade)
-) ENGINE=InnoDB;
->>>>>>> ffa314499521778d6c5de306150fecf42acc5205
 
+insert into Seguro (tipo_seguro, data_seguro)
+Values ('Todos os riscos', '2018-07-01');
+insert into Seguro (tipo_seguro, data_seguro)
+Values ('Sem cobertura', '2018-08-01');
+insert into Seguro (tipo_seguro, data_seguro)
+Values ('Sem cobertura', '2018-09-15');
+insert into Seguro (tipo_seguro, data_seguro)
+Values ('Todos os riscos', '2018-10-02');
+
+insert into Funcionarios (primeiro_nome, segundo_nome, telemovel, NIF)
+Values ('Amaro', 'O Gonçalo', '916891231', '123123');
+
+Delete
+From Funcionarios
+where id_funcionario='1'
