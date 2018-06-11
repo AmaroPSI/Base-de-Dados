@@ -15,7 +15,9 @@ DROP TABLE IF EXISTS Aluguer;
 DROP TABLE IF EXISTS Seguro;
 DROP TABLE IF EXISTS Carros;*/
 
-/*CREATE TABLE Clientes (
+/*CRIAÇÃO DAS TABELAS*/
+/*
+CREATE TABLE Clientes (
   id_cliente int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   primeiro_nome varchar(100) NOT NULL,
   segundo_nome varchar(100) NOT NULL,
@@ -24,78 +26,101 @@ DROP TABLE IF EXISTS Carros;*/
   morada varchar(500),
   NIF int(20),
   email varchar(100),
-  cod_postal int(10) NOT NULL,
-  Unique key(telemovel,email,NIF)
-) engine=InnoDB;*/
+  cod_postal varchar(9) NOT NULL,
+  UNIQUE KEY (NIF),
+  UNIQUE KEY (email),
+  UNIQUE KEY (telemovel)
+) engine=InnoDB;
 
-/*CREATE TABLE Disponibilidade_Veiculo(
-id_disponibilidade int (10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-data_inicio_disponibilidade date NOT NULL,
-data_fim_disponibilidade date NOT NULL
-)ENGINE=InnoDB;*/
+CREATE TABLE Disponibilidade_Veiculo(
+	id_disponibilidade int (10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	data_inicio_disponibilidade date NOT NULL,
+	data_fim_disponibilidade date NOT NULL
+) ENGINE=InnoDB;
 
-/*CREATE TABLE Marca_Carros (
-  id_marca int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  marca varchar(100) NOT NULL,
-  modelo varchar(100) NOT NULL,
-  ano int(4) NOT NULL,
-  categoria varchar(50) NOT NULL,
-  cv int(5) NOT NULL
+CREATE TABLE Marca_Carros (
+	id_marca int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	marca varchar(100) NOT NULL,
+	modelo varchar(100) NOT NULL,
+	ano int(4) NOT NULL,
+	categoria varchar(50) NOT NULL,
+	cv int(5) NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE Funcionarios (
-  id_funcionario int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  primeiro_nome varchar(100) NOT NULL,
-  segundo_nome varchar(100) NOT NULL,
-  telemovel int(12) NOT NULL,
-  NIF int(20)NOT NULL, 
-  UNIQUE KEY (NIF, telemovel)
+	id_funcionario int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	primeiro_nome varchar(100) NOT NULL,
+	segundo_nome varchar(100) NOT NULL,
+	telemovel int(12) NOT NULL,
+	NIF int(20)NOT NULL, 
+	UNIQUE KEY (NIF),
+	UNIQUE KEY (telemovel)
 ) ENGINE=InnoDB;
 
 CREATE TABLE Aluguer (
-  id_aluguer int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  data_inicio_aluguer date NOT NULL,
-  data_fim_aluguer date NOT NULL, 
-  custo_final decimal(8,8) NOT NULL,
-  custos_reparação decimal(8,8) NOT NULL,
-  numero_km_feitos int(8),
-  FOREIGN KEY (id_aluguer) REFERENCES Clientes(id_cliente),
-  FOREIGN KEY (id_aluguer) REFERENCES Funcionarios(id_funcionario)
-  ) ENGINE=InnoDB;
+	id_aluguer int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	data_inicio_aluguer date NOT NULL,
+	data_fim_aluguer date NOT NULL, 
+	custo_final int(8) NOT NULL,
+	custos_reparação int(8) NOT NULL,
+	numero_km_feitos int(8)
+) ENGINE=InnoDB;
 
 CREATE TABLE Seguro (
-  id_seguro int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  tipo_seguro varchar(100) NOT NULL,
-  data_seguro date NOT NULL,
-  FOREIGN KEY (id_seguro) REFERENCES Carros (matricula)
+	id_seguro int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	tipo_seguro varchar(100) NOT NULL,
+	data_seguro date NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE Carros (
-matricula int(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-FOREIGN KEY (matricula) REFERENCES Aluguer(id_aluguer),
-FOREIGN KEY (matricula) REFERENCES Marca_carros(id_marca),
-FOREIGN KEY (matricula) REFERENCES Seguro (id_seguro),
-FOREIGN KEY (matricula) REFERENCES disponibilidade_veiculo (id_disponibilidade),
-Unique Key(matricula)
+id_carros int(9) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+matricula varchar(9) NOT NULL,
+UNIQUE KEY (id_carros),
+UNIQUE KEY (matricula)
 ) ENGINE=InnoDB;*/
 
-insert into Clientes (primeiro_nome, segundo_nome, cidade, telemovel, morada, NIF, email, cod_postal)
-Values ('Vitor', 'Ferreira', 'Mafra', '917777779', 'Rua das Travessas Nº40', '123123543', 'vitor|ferreira@hotmail.com', '2535324');
+SET foreign_key_checks = 0;
 
-insert into Disponibilidade_Veiculo (data_inicio_disponibilidade, data_fim_disponibilidade)
+/*ADICIONANDO IPERLIGAÇÕES ENTRE AS VÁRIAS TABELAS*/
+/*
+ALTER TABLE `Carros` ADD CONSTRAINT `fk_Seguro` FOREIGN KEY ( `id_carros` ) REFERENCES `Seguro` ( `id_seguro` ) ;
+ALTER TABLE `Carros` ADD CONSTRAINT `fk_marca_carros` FOREIGN KEY ( `id_carros` ) REFERENCES `marca_carros` ( `id_marca` ) ;
+ALTER TABLE `Carros` ADD CONSTRAINT `fk_disponibilidade_veiculo` FOREIGN KEY ( `id_carros` ) REFERENCES `disponibilidade_veiculo` ( `id_disponibilidade` ) ;
+ALTER TABLE `Carros` ADD CONSTRAINT `fk_aluguer` FOREIGN KEY ( `id_carros` ) REFERENCES `aluguer` ( `id_aluguer` ) ;
+ALTER TABLE `Funcionarios` ADD CONSTRAINT `fk_funcionarios` FOREIGN KEY ( `id_funcionario` ) REFERENCES `Aluguer` ( `id_aluguer` ) ;
+ALTER TABLE `Clientes` ADD CONSTRAINT `fk_clientes` FOREIGN KEY ( `id_cliente` ) REFERENCES `Aluguer` ( `id_aluguer` ) ;
+*/
+
+/* REMOVER TODOS OS DADOS DE UMA TABELA*/
+/*
+TRUNCATE TABLE clientes;
+TRUNCATE TABLE disponibilidade_veiculo;
+TRUNCATE TABLE marca_carros;
+TRUNCATE TABLE funcionarios;
+TRUNCATE TABLE seguro;
+TRUNCATE TABLE aluguer;
+TRUNCATE TABLE carros;*/
+
+
+/*INSERIR DADOS NA TABELA ESPECIFICA*/
+
+insert into clientes (primeiro_nome, segundo_nome, cidade, telemovel, morada, NIF, email, cod_postal)
+Values ('Cristiano', 'Reinaldo', 'Aveiro City', '911717171', 'Rua dos patinhos Nº17', '234234232', 'cristiano_reinaldo@sapo.pt', '2322-123');
+
+insert into disponibilidade_veiculo (data_inicio_disponibilidade, data_fim_disponibilidade)
 Values ('2018-05-01', '2018-07-01');
 
-insert into Marca_Carros (marca, modelo, ano, categoria, cv)
-Values ('Volkswagen', 'Golf IV','1999', 'Ligeiro', '110');
+insert into marca_carros (marca, modelo, ano, categoria, cv)
+Values ('Seat', 'Passat','2001', 'Carrinha', '130');
 
-insert into Funcionarios (primeiro_nome, segundo_nome, telemovel, NIF)
-Values ('Nuno', 'Alves', '917777777', '422525202');
+insert into funcionarios (primeiro_nome, segundo_nome, telemovel, NIF)
+Values ('Pequeno', 'Messi', '911223177', '234412232');
 
-insert into Aluguer (data_inicio_aluguer, data_fim_aluguer, custo_final, custos_reparação, numero_km_feitos)
-Values ('2018-07-01', '2018-09-01', '1250', '250', '120000');
+insert into seguro (tipo_seguro, data_seguro)
+Values ('Todas as coberturas', '2018-01-01');
 
-insert into Seguro (tipo_seguro, data_seguro)
-Values ('Todos os riscos', '2018-07-01');
+insert into carros (matricula)
+Values ('12-PT-43');
 
-insert into Carros (matricula)
-Values ('12-AH-12');
+insert into aluguer (data_inicio_aluguer, data_fim_aluguer, custo_final, custos_reparação, numero_km_feitos)
+Values ('2018-05-01', '2038-07-01', '15550', '12000', '10000');
