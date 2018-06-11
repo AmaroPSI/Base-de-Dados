@@ -1,3 +1,10 @@
+/*CDBD_T2_G1
+Programação de Sistemas de Informação 
+Rent a Car
+Gonçalo Amaro, estudante n.º 2170400;
+Joel Runa, estudante n.º 2170397;
+Pedro Neves, estudante n.º 2170401
+*/
 Use projetobd;
 
 /*DROP TABLE IF EXISTS Clientes;
@@ -6,9 +13,9 @@ DROP TABLE IF EXISTS Marca_Carros;
 DROP TABLE IF EXISTS Funcionarios;
 DROP TABLE IF EXISTS Aluguer;
 DROP TABLE IF EXISTS Seguro;
-DROP TABLE IF EXISTS Carros;
+DROP TABLE IF EXISTS Carros;*/
 
-CREATE TABLE Clientes (
+/*CREATE TABLE Clientes (
   id_cliente int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   primeiro_nome varchar(100) NOT NULL,
   segundo_nome varchar(100) NOT NULL,
@@ -17,22 +24,22 @@ CREATE TABLE Clientes (
   morada varchar(500),
   NIF int(20),
   email varchar(100),
-  cod_postal decimal(8,8) NOT NULL,
+  cod_postal int(10) NOT NULL,
   Unique key(telemovel,email,NIF)
-) engine=InnoDB;
+) engine=InnoDB;*/
 
-CREATE TABLE Disponibilidade_Veiculo(
+/*CREATE TABLE Disponibilidade_Veiculo(
 id_disponibilidade int (10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 data_inicio_disponibilidade date NOT NULL,
 data_fim_disponibilidade date NOT NULL
-)ENGINE=InnoDB;
+)ENGINE=InnoDB;*/
 
-CREATE TABLE Marca_Carros (
+/*CREATE TABLE Marca_Carros (
   id_marca int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   marca varchar(100) NOT NULL,
   modelo varchar(100) NOT NULL,
   ano int(4) NOT NULL,
-  categoria int(12) NOT NULL,
+  categoria varchar(50) NOT NULL,
   cv int(5) NOT NULL
 ) ENGINE=InnoDB;
 
@@ -72,18 +79,23 @@ FOREIGN KEY (matricula) REFERENCES disponibilidade_veiculo (id_disponibilidade),
 Unique Key(matricula)
 ) ENGINE=InnoDB;*/
 
-insert into Seguro (tipo_seguro, data_seguro)
-Values ('Todos os riscos', '2018-07-01');
-insert into Seguro (tipo_seguro, data_seguro)
-Values ('Sem cobertura', '2018-08-01');
-insert into Seguro (tipo_seguro, data_seguro)
-Values ('Sem cobertura', '2018-09-15');
-insert into Seguro (tipo_seguro, data_seguro)
-Values ('Todos os riscos', '2018-10-02');
+insert into Clientes (primeiro_nome, segundo_nome, cidade, telemovel, morada, NIF, email, cod_postal)
+Values ('Vitor', 'Ferreira', 'Mafra', '917777779', 'Rua das Travessas Nº40', '123123543', 'vitor|ferreira@hotmail.com', '2535324');
+
+insert into Disponibilidade_Veiculo (data_inicio_disponibilidade, data_fim_disponibilidade)
+Values ('2018-05-01', '2018-07-01');
+
+insert into Marca_Carros (marca, modelo, ano, categoria, cv)
+Values ('Volkswagen', 'Golf IV','1999', 'Ligeiro', '110');
 
 insert into Funcionarios (primeiro_nome, segundo_nome, telemovel, NIF)
-Values ('Amaro', 'O Gonçalo', '916891231', '123123');
+Values ('Nuno', 'Alves', '917777777', '422525202');
 
-Delete
-From Funcionarios
-where id_funcionario='1'
+insert into Aluguer (data_inicio_aluguer, data_fim_aluguer, custo_final, custos_reparação, numero_km_feitos)
+Values ('2018-07-01', '2018-09-01', '1250', '250', '120000');
+
+insert into Seguro (tipo_seguro, data_seguro)
+Values ('Todos os riscos', '2018-07-01');
+
+insert into Carros (matricula)
+Values ('12-AH-12');
