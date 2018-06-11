@@ -103,24 +103,24 @@ TRUNCATE TABLE carros;*/
 
 
 /*INSERIR DADOS NA TABELA ESPECIFICA*/
-
+/*
 insert into clientes (primeiro_nome, segundo_nome, cidade, telemovel, morada, NIF, email, cod_postal)
-Values ('Cristiano', 'Reinaldo', 'Aveiro City', '911717171', 'Rua dos patinhos Nº17', '234234232', 'cristiano_reinaldo@sapo.pt', '2322-123');
+Values ('Zé', 'Melro', 'Lisboa City', '931828127', 'Rua dos Lisboetas Nº9', '161364365', 'ze_melro@sapo.pt', '1254-252');
 
 insert into disponibilidade_veiculo (data_inicio_disponibilidade, data_fim_disponibilidade)
-Values ('2018-05-01', '2018-07-01');
+Values ('2020-12-16', '2021-07-23');
 
 insert into marca_carros (marca, modelo, ano, categoria, cv)
-Values ('Seat', 'Passat','2001', 'Carrinha', '130');
+Values ('Opel', 'Corsa','1996', 'Ligeiro', '65');
 
 insert into funcionarios (primeiro_nome, segundo_nome, telemovel, NIF)
-Values ('Pequeno', 'Messi', '911223177', '234412232');
+Values ('Maria', 'Conceição', '919292192', '493923892');
 
 insert into seguro (tipo_seguro, data_seguro)
-Values ('Todas as coberturas', '2018-01-01');
+Values ('Sem Coberturas', '2019-12-24');
 
 insert into carros (matricula)
-Values ('12-PT-43');
+Values ('86-YZ-14');
 
 insert into aluguer (data_inicio_aluguer, data_fim_aluguer, custo_final, custos_reparação, numero_km_feitos)
-Values ('2018-05-01', '2038-07-01', '15550', '12000', '10000');
+Values ('2018-05-15', '2020-05-15', '6000', '3500', '15000');*/
