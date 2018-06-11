@@ -1,4 +1,4 @@
-/*CDBD_G2
+/*CDBD_T9_G2
 Programação de Sistemas de Informação 
 Rent a Car
 Gonçalo Amaro, estudante n.º 2170400;
@@ -186,8 +186,8 @@ select ano AS 'Ano do Automóvel',
 categoria AS 'Categoria'
 from marca_carros order by ano;
 */
-/*
-Consultas
+
+/*Consultas
 select marca, modelo, cv
 from marca_carros
 where ano = '1999'
