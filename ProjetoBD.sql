@@ -16,8 +16,8 @@ DROP TABLE IF EXISTS Seguro;
 DROP TABLE IF EXISTS Carros;
 */
 /*CRIAÇÃO DAS TABELAS*/
-/*
-CREATE TABLE Clientes (
+
+/*CREATE TABLE Clientes (
   id_cliente int(10) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   primeiro_nome varchar(100) NOT NULL,
   segundo_nome varchar(100) NOT NULL,
@@ -103,7 +103,8 @@ TRUNCATE TABLE carros;*/
 
 
 /*INSERIR DADOS NA TABELA ESPECIFICA*/
-/*insert into clientes (primeiro_nome, segundo_nome, cidade, telemovel, morada, NIF, email, cod_postal)
+/*
+insert into clientes (primeiro_nome, segundo_nome, cidade, telemovel, morada, NIF, email, cod_postal)
 Values 
 ('Zé', 'Melro', 'Lisboa', '931828127', 'Rua dos Lisboetas Nº9', '789784519', 'ze_melro@sapo.pt', '1254-252'),
 ('António', 'Jorge', 'Porto', '914785478', 'Rua dos Aliados nº2', '987451478', 'Antonio.jorge@hotmail.pt', '8748-987'),
@@ -165,17 +166,35 @@ Values
 /*JOIN GROUP 1	
 SELECT distinct A.custo_final AS 'Preco do Veículo' , A.custos_reparação AS 'Danos do Veículo'
 FROM aluguer AS A 
-JOIN carros AS C ON C.id_carros*/
-/*JOIN GROUP 2
-
+JOIN carros AS C ON C.id_carros
+*/
+/*
+JOIN GROUP 2
 SELECT DISTINCT M_A.marca AS 'Marca' , M_A.modelo AS 'Modelo', A.custo_final AS 'Total a Pagar Pelo Carro'
 FROM marca_carros AS M_A
-JOIN aluguer AS A ON A.id_aluguer*/
-/*SELECT1
+JOIN aluguer AS A ON A.id_aluguer
+*/
+/*
+SELECT1
 select id_marca, marca AS 'Marca',
 lower(modelo) AS Modelo
-from marca_carros order by id_marca;*/
-/*SELECT2
+from marca_carros order by id_marca;
+*/
+/*
+SELECT2
 select ano AS 'Ano do Automóvel',
 categoria AS 'Categoria'
-from marca_carros order by ano;*/
+from marca_carros order by ano;
+*/
+/*
+Consultas
+select marca, modelo, cv
+from marca_carros
+where ano = '1999'
+order by marca;
+
+select primeiro_nome, segundo_nome, telemovel, email
+from clientes
+where cidade = 'Lisboa'
+order by primeiro_nome;
+*/
