@@ -1,4 +1,4 @@
-/*CDBD_T2_G1
+/*CDBD_G2
 Programação de Sistemas de Informação 
 Rent a Car
 Gonçalo Amaro, estudante n.º 2170400;
@@ -81,7 +81,7 @@ UNIQUE KEY (matricula)
 */
 SET foreign_key_checks = 0;
 
-/*ADICIONANDO IPERLIGAÇÕES ENTRE AS VÁRIAS TABELAS*/
+/*ADICIONANDO HIPERLIGAÇÕES ENTRE AS VÁRIAS TABELAS*/
 /*
 ALTER TABLE `Carros` ADD CONSTRAINT `fk_Seguro` FOREIGN KEY ( `id_carros` ) REFERENCES `Seguro` ( `id_seguro` ) ;
 ALTER TABLE `Carros` ADD CONSTRAINT `fk_marca_carros` FOREIGN KEY ( `id_carros` ) REFERENCES `marca_carros` ( `id_marca` ) ;
@@ -99,12 +99,11 @@ TRUNCATE TABLE marca_carros;
 TRUNCATE TABLE funcionarios;
 TRUNCATE TABLE seguro;
 TRUNCATE TABLE aluguer;
-TRUNCATE TABLE carros;
-*/
+TRUNCATE TABLE carros;*/
+
 
 /*INSERIR DADOS NA TABELA ESPECIFICA*/
-
-insert into clientes (primeiro_nome, segundo_nome, cidade, telemovel, morada, NIF, email, cod_postal)
+/*insert into clientes (primeiro_nome, segundo_nome, cidade, telemovel, morada, NIF, email, cod_postal)
 Values 
 ('Zé', 'Melro', 'Lisboa', '931828127', 'Rua dos Lisboetas Nº9', '789784519', 'ze_melro@sapo.pt', '1254-252'),
 ('António', 'Jorge', 'Porto', '914785478', 'Rua dos Aliados nº2', '987451478', 'Antonio.jorge@hotmail.pt', '8748-987'),
@@ -154,8 +153,29 @@ Values
 
 insert into aluguer (data_inicio_aluguer, data_fim_aluguer, custo_final, custos_reparação, numero_km_feitos)
 Values
-('2016-07-21', '2020-05-15', '5200', '3500', '12000'),
-('2017-05-15', '2018-06-25', '7500', '3500', '21000'),
-('2018-11-14', '2019-05-24', '8000', '3500', '20000'),
+('2016-07-21', '2020-05-15', '10200', '8520', '12000'),
+('2017-05-15', '2018-06-25', '7500', '200', '21000'),
+('2018-11-14', '2019-05-24', '8000', '1478', '20000'),
 ('2017-04-17', '2019-05-01', '9000', '3500', '25000'),
-('2017-08-20', '2019-05-04', '10000', '3500', '20000');
+('2017-08-20', '2019-05-04', '10000', '3200', '20000');*/
+
+
+
+
+/*JOIN GROUP 1	
+SELECT distinct A.custo_final AS 'Preco do Veículo' , A.custos_reparação AS 'Danos do Veículo'
+FROM aluguer AS A 
+JOIN carros AS C ON C.id_carros*/
+/*JOIN GROUP 2
+
+SELECT DISTINCT M_A.marca AS 'Marca' , M_A.modelo AS 'Modelo', A.custo_final AS 'Total a Pagar Pelo Carro'
+FROM marca_carros AS M_A
+JOIN aluguer AS A ON A.id_aluguer*/
+/*SELECT1
+select id_marca, marca AS 'Marca',
+lower(modelo) AS Modelo
+from marca_carros order by id_marca;*/
+/*SELECT2
+select ano AS 'Ano do Automóvel',
+categoria AS 'Categoria'
+from marca_carros order by ano;*/
