@@ -104,6 +104,22 @@ TRUNCATE TABLE carros;*/
 
 /*INSERIR DADOS NA TABELA ESPECIFICA*/
 /*
+
+insert into aluguer (data_inicio_aluguer, data_fim_aluguer, custo_final, custos_reparação, numero_km_feitos)
+Values
+('2016-07-21', '2020-05-15', '10200', '8520', '12000'),
+('2017-05-15', '2018-06-25', '7500', '200', '21000'),
+('2018-11-14', '2019-05-24', '8000', '1478', '20000'),
+('2017-04-17', '2019-05-01', '9000', '3500', '25000'),
+('2017-08-20', '2019-05-04', '10000', '3200', '20000');
+insert into carros (matricula)
+Values 
+('86-YZ-14'),
+('78-XV-87'),
+('99-AA-00'),
+('98-AD-87'),
+('32-ER-47');
+
 insert into clientes (primeiro_nome, segundo_nome, cidade, telemovel, morada, NIF, email, cod_postal)
 Values 
 ('Zé', 'Melro', 'Lisboa', '931828127', 'Rua dos Lisboetas Nº9', '789784519', 'ze_melro@sapo.pt', '1254-252'),
@@ -144,22 +160,7 @@ Values
 ('Contra Todos os Riscos', '2019-02-21'),
 ('Seguro de Vida', '2012-08-21');
 
-insert into carros (matricula)
-Values 
-('86-YZ-14'),
-('78-XV-87'),
-('99-AA-00'),
-('98-AD-87'),
-('32-ER-47');
-
-insert into aluguer (data_inicio_aluguer, data_fim_aluguer, custo_final, custos_reparação, numero_km_feitos)
-Values
-('2016-07-21', '2020-05-15', '10200', '8520', '12000'),
-('2017-05-15', '2018-06-25', '7500', '200', '21000'),
-('2018-11-14', '2019-05-24', '8000', '1478', '20000'),
-('2017-04-17', '2019-05-01', '9000', '3500', '25000'),
-('2017-08-20', '2019-05-04', '10000', '3200', '20000');*/
-
+*/
 
 
 
@@ -174,12 +175,12 @@ SELECT DISTINCT M_A.marca AS 'Marca' , M_A.modelo AS 'Modelo', A.custo_final AS 
 FROM marca_carros AS M_A
 JOIN aluguer AS A ON A.id_aluguer
 */
-/*
-SELECT1
+
+
 select id_marca, marca AS 'Marca',
 lower(modelo) AS Modelo
-from marca_carros order by id_marca;
-*/
+from marca_carros order by marca;
+
 /*
 SELECT2
 select ano AS 'Ano do Automóvel',
